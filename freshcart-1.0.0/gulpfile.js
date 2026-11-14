@@ -127,7 +127,6 @@ function fileincludeTask(callback) {
 				basepath: '@file',
 			})
 		)
-		.pipe(cached())
 		.pipe(dest(paths.temp.basetemp));
 	callback();
 }
@@ -169,9 +168,9 @@ function syncReload(callback) {
 
 // Watch Task
 function watchTask() {
-	watch(paths.src.html, series(fileincludeTask, syncReload));
-	watch([paths.src.images, paths.src.fonts, paths.src.vendorJs], series(images, fonts, vendorJs));
-	watch([paths.src.tailwind, paths.src.html, TAILWIND_CONFIG], series(css, syncReload));
+	watch(paths.src.html, series(fileincludeTask, css, syncReload));
+	watch([paths.src.js, paths.src.images, paths.src.fonts], syncReload);
+	watch([paths.src.tailwind, TAILWIND_CONFIG], series(css, syncReload));
 }
 
 // Default Task Preview

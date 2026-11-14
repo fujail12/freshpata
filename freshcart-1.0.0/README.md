@@ -34,6 +34,8 @@ pnpm dev
 bun dev
 ```
 
+The development server runs at `http://localhost:3200`. Edit pages and partials in `src/`; changes to HTML, CSS, JavaScript, images, and fonts are watched and reloaded automatically. The root `index.html` is a separate static copy; `npm run build` writes the build output to `dist/`.
+
 ## Author
 
 ```
